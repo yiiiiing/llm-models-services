@@ -1,0 +1,54 @@
+@baseUri = http://127.0.0.1:8000
+
+### 生成表白场景的一段描述
+POST {{baseUri}}/confevent
+Content-Type: application/json
+
+{
+    "agent" : 
+        {
+            "nickname": "就这样吧",
+            "gender": "男",
+            "age": 30,
+            "vocation": "老师",
+            "interest": ["游戏", "历史", "哲学"],
+            "personality": ["学渣", "直爽"]
+        },
+    "relation": "同学"
+}
+
+### 在表白游戏中，生成AI的回复，得分和当前得分以及是否游戏结束
+POST {{baseUri}}/conf
+Content-Type: application/json
+
+{
+    "conf_event":
+        {
+            "agent" : 
+            {
+                "nickname": "就这样吧",
+                "gender": "男",
+                "age": 30,
+                "vocation": "老师",
+                "interest": ["游戏", "历史", "哲学"],
+                "personality": ["学渣", "直爽"]
+            },
+            "current_grade": 50,
+            "description": "你们是同学，有一天下午在图书馆你想向对方表白，你知道他喜欢哲学，所以你准备在图书馆找一本关于哲学的书，在书中夹上你想对他说的话。"
+        },
+    "conversation":
+        [
+            {
+                "sender": "user", 
+                "text": "我喜欢你"
+            }, 
+            {
+                "sender": "ai", 
+                "text": "（有些惊讶）我还没想好呢"
+            }, 
+            {
+                "sender": "user", 
+                "text": "我真的喜欢你"
+            }
+        ]
+}
