@@ -1,5 +1,13 @@
 # LLM microservice
 
+## Create env
+```bash
+python3 -m venv llm-service
+source llm-service/bin/activate
+pip install -r requirements.txt
+```
+
+
 ## Run locally
 
 ```bash

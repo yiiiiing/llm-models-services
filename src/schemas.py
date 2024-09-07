@@ -1,13 +1,15 @@
 
 from pydantic import BaseModel, Field
+from typing import List
+
 
 class Agent(BaseModel):
     nickname: str = Field(..., description = "昵称")
     gender: str = Field(..., description = "性别")
     age: int = Field(..., description = "年龄")
     vocation: str = Field(..., description = "身份")
-    interest: list[str] = Field([], description = "兴趣爱好")
-    personality: list[str] = Field([], description = "性格")
+    interest: List[str] = Field([], description = "兴趣爱好")
+    personality: List[str] = Field([], description = "性格")
 
 class Message(BaseModel):
     sender: str = Field(..., description = "sender")
@@ -26,7 +28,7 @@ class GenConfEventRequest(BaseModel):
 
 class GenConfResRequest(BaseModel):
     conf_event: Confession = Field(..., description="表白场景的信息，包括表白文案和被表白者信息")
-    conversation: list[Message] = Field(..., description = "对话")
+    conversation: List[Message] = Field(..., description = "对话")
 
 
 class GenChatResRequest(BaseModel):
